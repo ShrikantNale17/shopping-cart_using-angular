@@ -1,0 +1,19 @@
+<div class="container">
+    <app-header></app-header>
+    <ng-container *ngFor="let groupOfProducts of products">
+        <div class="row">
+            <div class="col-md-3" *ngFor="let product of groupOfProducts; index as i">
+                <div
+                    [class]="i % 4 == 0 ? 'bg-info' : i % 4 ==1 ? 'bg-success' : i % 4 == 2 ? 'bg-warning' : 'bg-danger'">
+                    <img src="http://xapi.ngminds.com/{{product.image}}" width="100" height="200">
+                    <br><br>
+                    <p>{{product.name}}</p>
+                    <p><i class="fa fa-inr"></i>{{product.price}}</p>
+                    <a class="btn btn-warning" (click)="addToCart(product)">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </ng-container>
+    <!-- <hr *ngIf="i % 4 == 3"> -->
+</div>

@@ -1,0 +1,9 @@
+.CartContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100% !important;
+}
+.coll{
+    width:25%;
+    padding: 2%;
+}

@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <app-header></app-header>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Place Order</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" [formGroup]="order_details" (ngSubmit)="onSubmit()">
+
+                        <table class="table table-striped">
+                            <thead class="table-head">
+                                <tr>
+                                    <td>Product Name</td>
+                                    <td> Quantity</td>
+                                    <td> SubTotal</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let product of cart">
+                                    <td>{{product.name}} </td>
+                                    <td>{{product.qty}}</td>
+                                    <td><i class="fa fa-inr"></i>{{product.qty * product.price}}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total</strong></td>
+                                    <td>
+                                        <strong>{{total_quantity}}</strong>
+                                    </td>
+                                    <td><strong><i class="fa fa-inr"></i>{{amount_payable}} </strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br />
+
+                        <br />
+                        <div class="form-group">
+                            <label for="inputName3" class="col-sm-2 control-label">Enter Order Details</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName3" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-6">
+                                <input class="form-control"
+                                    [class.is-invalid]="(name.touched || isSubmitted) && name.invalid" id="inputName3"
+                                    placeholder="Name" formControlName="personName">
+                                <small class="text-danger" *ngIf="(name.touched || isSubmitted) && name.invalid">This
+                                    field is required.</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Address</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control"
+                                    [class.is-invalid]="(address.touched || isSubmitted) && address.invalid"
+                                    id="inputEmail3" placeholder="Deliver Address"
+                                    formControlName="deliveryAddress"></textarea>
+                                <small class="text-danger"
+                                    *ngIf="(address.touched || isSubmitted) && address.invalid">This field is
+                                    required.</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-6">
+                                <button type="submit" class="btn btn-warning">Confirm Order</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <app-header></app-header>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">MY CART (1)
+                </div>
+                <div class="panel-body">
+                    <ng-container *ngFor="let cartItem of cart; index as i">
+                        <div class="row">
+                            <div class="col-md-3"> <img src="http://xapi.ngminds.com/{{cartItem.image}}" width="100px"
+                                    height="200px"></div>
+                            <div class="col-md-3"> {{cartItem.name}}
+                                <br /><i class="fa fa-inr"></i>{{cartItem.price}}
+                            </div>
+                            <div class="col-md-3"> quantity
+                                <br />
+                                <button (click)="decrement(cartItem._id)" class='qtyminus'>-</button>
+                                <input type='text' name='quantity' class='qty' size="5px" value="{{cartItem?.qty}}" />
+                                <button (click)="increment(cartItem._id)">+</button>
+                            </div>
+                            <div class="col-md-3"> <a class="btn btn-warning"
+                                    (click)="removeItem(cartItem._id)">remove</a></div>
+                        </div>
+                        <br>
+                    </ng-container>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <label class="pull-right">Amount Payable</label>
+                        </div>
+                        <div class="col-md-3 ">
+                            {{amount_payable}}
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a routerLink="/" class="btn btn-success">Continue Shopping</a>
+                    <a class="pull-right btn btn-danger" (click)="goToPlaceOrder()"
+                        [class.disabled]="amount_payable < 500">Place Order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

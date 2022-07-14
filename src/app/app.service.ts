@@ -13,7 +13,11 @@ export class AppService implements OnInit {
 
   ngOnInit(): void { }
 
+  getAllProducts() {
+    return this.http.get(`http://xapi.ngminds.com/api/getAllProducts`);
+  }
+
   placeOrder(order_details: any) {
-    return this.http.post(`http://xapi.ngminds.com/api/placeOrder`, order_details)
+    return this.http.post(`http://xapi.ngminds.com/api/placeOrder`, order_details);
   }
 }

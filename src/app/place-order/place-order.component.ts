@@ -57,7 +57,7 @@ export class PlaceOrderComponent implements OnInit {
 				})),
 				orderTotal: this.amount_payable
 			}
-			this.appService.placeOrder(body).subscribe((response) => console.log(response));
+			this.appService.placeOrder(body).subscribe((response) => console.log(response), (err) => console.log(err));
 		}
 	}
 

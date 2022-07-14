@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 	constructor(private http: HttpClient, private appService: AppService) { }
 
 	ngOnInit(): void {
-		this.http.get(`http://xapi.ngminds.com/api/getAllProducts`).subscribe((response: any) => {
+		this.appService.getAllProducts().subscribe((response: any) => {
 			const products = response.products;
 			for (let i = 0; i < products.length; i += 4) {
 				const temp = products.slice(i, i + 4);
